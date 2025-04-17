@@ -3,5 +3,8 @@
         crossorigin />
     <h2 class="listing-heading">{{ housingLocation.name }}</h2>
     <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
-    <a [routerLink]="['/details', housingLocation.id]">more</a>
+    <div class="listing-description">
+        <span *appCustomIf="housingLocation.wifi"><img src="assets/wifi-line.svg" alt="" style="width: 1rem;"></span>
+        <a [routerLink]="['/details', housingLocation.id]">more</a>
+    </div>
 </section>
