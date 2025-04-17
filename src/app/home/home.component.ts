@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { HousingService } from '../housing.service';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
-import { NgFor } from '@angular/common';
+import { NgFor, SlicePipe } from '@angular/common';
 import { HousingLocation } from '../housinglocation';
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor, HousingLocationComponent],
+  imports: [NgFor, HousingLocationComponent, SlicePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
