@@ -3,10 +3,11 @@ import { HousingService } from '../housing.service';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { NgFor, SlicePipe } from '@angular/common';
 import { HousingLocation } from '../housinglocation';
+import { SortByNamePipe } from '../pipes/sort-by-name.pipe';
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor, HousingLocationComponent, SlicePipe],
+  imports: [NgFor, HousingLocationComponent, SlicePipe, SortByNamePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
