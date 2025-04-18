@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { HousingService } from '../housing.service';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
-import { NgFor, SlicePipe } from '@angular/common';
+import { CommonModule, NgFor, NgIf, SlicePipe } from '@angular/common';
 import { HousingLocation } from '../housinglocation';
 import { SortByNamePipe } from '../pipes/sort-by-name.pipe';
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor, HousingLocationComponent, SlicePipe, SortByNamePipe],
+  imports: [NgFor, NgIf, CommonModule, HousingLocationComponent, SlicePipe, SortByNamePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,12 +17,22 @@ export class HomeComponent {
   housingLocationList: HousingLocation[] = [];
   filteredLocationList: HousingLocation[] = [];
   housingService: HousingService = inject(HousingService);
+  textPromise: Promise<any> | null = null;
 
   constructor(private ref: ChangeDetectorRef) {
+    this.getSamplePromise();
     this.showHousingLocationEvery3secs();
     this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
       this.housingLocationList = housingLocationList;
       this.filteredLocationList = housingLocationList;
+    });
+  }
+
+  async getSamplePromise() {
+    this.textPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Done 👍');
+      }, 3000);
     });
   }
 
