@@ -2,6 +2,18 @@
     background: var(--accent-color);
     border-radius: 30px;
     padding-bottom: 30px;
+    transition: all 3s ease-in-out normal;
+    animation: listingHoverAnimation 600ms ease;
+}
+
+@keyframes listingHoverAnimation {
+    0% {
+        translate: 0 10px;
+    }
+
+    100% {
+        translate: 0 0;
+    }
 }
 
 .listing-heading {

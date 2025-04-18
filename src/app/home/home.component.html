@@ -5,6 +5,7 @@
     </form>
 </section>
 <section class="results">
-    <app-housing-location *ngFor="let housingLocation of (filteredLocationList | slice : 0 : 5 | sortByName)"
+    <app-housing-location
+        *ngFor="let housingLocation of (filteredLocationList | slice : 0 : maxItemsToShow | sortByName)"
         [housingLocation]="housingLocation"></app-housing-location>
 </section>
